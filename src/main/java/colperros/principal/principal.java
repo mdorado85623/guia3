@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 /**
  *
- * @author 
+ * @author Santiago Velasquez, Mario Dorado y Jeimmy Naranjo
  */
 public class principal {
     static List<Perro> perros = new LinkedList<>();
@@ -21,9 +21,10 @@ public class principal {
     do{
         System.out.println("1. Agregar Nuevo Perro");
         System.out.println("2. Listar perros");
-        System.out.println("3. Listar Perros por Localidad");
-        System.out.println("4. Listar Perros por Raza");
-        System.out.println("5. Salir");
+        System.out.println("3. Listar informacion por perro");
+        System.out.println("4. Listar Perros por Localidad");
+        System.out.println("5. Listar Perros por Raza");
+        System.out.println("0. Salir");
         System.out.println("Opcion:");
         opcion = teclado.nextInt();
         switch (opcion) {
@@ -45,18 +46,16 @@ public class principal {
                 
             case 5:
                 perrosRaza();
-                break;
-                
-            
-            case 6:
-                salir();
-                break;
+               break;
+
         }
                   
     }
     
     while (opcion !=0);
     }
+    
+    
      private static void agregarPerro(){
          teclado.nextLine();
          System.out.println("Nombre de perro: ");
@@ -75,7 +74,7 @@ public class principal {
          teclado.nextLine();
          System.out.println("Dia de asistencia :");
          String dia = teclado.nextLine();
-         teclado.nextLine();
+        
          
         Perro perro = new Perro(nom, raz, loc, ced, nomd, teld, dia);
         
@@ -83,8 +82,7 @@ public class principal {
         System.out.println(perro);
         System.out.println("Nuevo perro añadido");
         
-        
-    }
+     }
      private static void listarPerros(){
          System.out.println("Lista de Perros: ");
          
@@ -105,19 +103,78 @@ public class principal {
         for (Perro i: perros){
             if (i.getNombre().equalsIgnoreCase(perrob) ){
             System.out.println(i);
+            cont++;
             }
+           
         }
-        if (cont == 0);{
+        
+        if(cont == 0)
+        {
         System.out.println("No existe perro con el nombre: " + perrob);
-    }
-     
+        }
+        else{
             
-                }
-
-    private static void perrosLocalidad() {
+        }
         
     }
+
+    private static void perrosLocalidad() {
+        teclado.nextLine();
+        System.out.println(" Localidad a buscar: ");
+        String localidad = teclado.nextLine();
+        int cont = 0;
+        for (Perro i: perros){
+            
+            if (i.getLocalidad().equalsIgnoreCase(localidad) ){
+                String nombrep = perros.get(cont).getNombre();
+            System.out.println(nombrep);
+            cont++;
+            }
+           
+        }
+        
+        if(cont == 0)
+        {
+        System.out.println("No existe perro con el nombre: " + localidad);
+        }
+        else{
+            
+        }
+         
+        }
+
+    private static void perrosRaza() {
+        
+        teclado.nextLine();
+        System.out.println(" Raza del perro a buscar: ");
+        String raza = teclado.nextLine();
+        int cont = 0;
+        for (Perro i: perros){
+            
+            if (i.getRaza().equalsIgnoreCase(raza) ){
+                cont = cont + 1;
+        
+            }
+           
+        }
+        
+        
+        if(cont == 0)
+        {
+        System.out.println("No existen perros de la raza: " + raza  );
+        }
+        else{
+            System.out.println(" Hay " + cont + " perros de la raza " + raza);
+        }
+       
     }
+}
+
+      
+        
+        
+    
+    
         
      
 
